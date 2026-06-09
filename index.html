@@ -1,53 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>登入 Discord</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="bg-decorations">
-        <div class="shape potion"></div>
-        <div class="shape coin"></div>
-        <div class="shape crystal"></div>
-        <div class="shape star" style="top: 15%; left: 25%;">✦</div>
-        <div class="shape star" style="top: 75%; left: 15%;">✦</div>
-        <div class="shape star" style="top: 30%; right: 20%;">✦</div>
-    </div>
-
-    <div class="login-container">
-        <form class="login-box">
-            <div class="login-left">
-                <h2>歡迎回來！</h2>
-                <p class="subtitle">我們很高興又見到您了！</p>
-                
-                <div class="input-group">
-                    <label>電子郵件或電話號碼 <span class="req">*</span></label>
-                    <input type="text" required>
-                </div>
-
-                <div class="input-group">
-                    <label>密碼 <span class="req">*</span></label>
-                    <input type="password" required>
-                    <a href="#" class="link-text">忘記您的密碼？</a>
-                </div>
-
-                <button type="submit" class="login-btn">登入</button>
-                <p class="footer-text">需要一個帳號？ <a href="#" class="link-text">註冊</a></p>
-            </div>
-            
-            <div class="login-right">
-                <div class="qr-code">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=DiscordSecurityDemo" alt="QR Code">
-                </div>
-                <h3>使用 QR Code 登入</h3>
-                <p>用 <strong>Discord 行動應用程式</strong>掃描即可立即登入。</p>
-                <a href="#" class="link-text secondary">或者，使用瀏覽器登入</a>
-            </div>
-        </form>
-    </div>
-
-    <script src="script.js"></script>
-</body>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
