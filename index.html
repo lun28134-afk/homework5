@@ -4,9 +4,92 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>登入 Discord</title>
+    <link rel="stylesheet" href="./src/assets/style.css" />
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="./src/main.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script>
+      const LoginLeft = {
+        template: `
+          <div class="login-left">
+            <h2>歡迎回來！</h2>
+            <p class="subtitle">我們很高興又見到您了！</p>
+
+            <div class="input-group">
+              <label>電子郵件或電話號碼 <span class="req">*</span></label>
+              <input v-model="email" type="text" required />
+            </div>
+
+            <div class="input-group">
+              <label>密碼 <span class="req">*</span></label>
+              <input v-model="password" type="password" required />
+              <a href="#" class="link-text">忘記您的密碼？</a>
+            </div>
+
+            <button type="button" class="login-btn" @click="handleLogin">登入</button>
+            <p class="footer-text">需要一個帳號？ <a href="#" class="link-text">註冊</a></p>
+          </div>
+        `,
+        data() {
+          return {
+            email: '',
+            password: ''
+          }
+        },
+        methods: {
+          handleLogin() {
+            if (this.email === '' || this.password === '') {
+              alert('請輸入電子郵件與密碼以進行模擬登入。')
+            } else {
+              alert(
+                '🚨 【資安警報：這是一個教學模擬頁面】\n\n' +
+                  '剛才你點擊了登入，在現實的釣魚網站中，你的帳號與密碼此刻已經被傳送到黑客的資料庫中。\n\n' +
+                  '💡 防詐小撇步：\n' +
+                  '1. 永遠檢查網址列是否為官方域名 (discord.com)。\n' +
+                  '2. 官方絕對不會透過 GitHub Pages 進行登入驗證。'
+              )
+            }
+          }
+        }
+      }
+
+      const LoginRight = {
+        template: `
+          <div class="login-right">
+            <div class="qr-code">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=DiscordSecurityDemo" alt="QR Code" />
+            </div>
+            <h3>使用 QR Code 登入</h3>
+            <p>用 <strong>Discord 行動應用程式</strong>掃描即可立即登入。</p>
+            <a href="#" class="link-text secondary">或者，使用瀏覽器登入</a>
+          </div>
+        `
+      }
+
+      const App = {
+        components: { LoginLeft, LoginRight },
+        template: `
+          <div>
+            <div class="bg-decorations">
+              <div class="shape potion"></div>
+              <div class="shape coin"></div>
+              <div class="shape crystal"></div>
+              <div class="shape star" style="top: 15%; left: 25%;">✦</div>
+              <div class="shape star" style="top: 75%; left: 15%;">✦</div>
+              <div class="shape star" style="top: 30%; right: 20%;">✦</div>
+            </div>
+            <div class="login-container">
+              <form class="login-box" @submit.prevent>
+                <LoginLeft />
+                <LoginRight />
+              </form>
+            </div>
+          </div>
+        `
+      }
+
+      Vue.createApp(App).mount('#app')
+    </script>
   </body>
 </html>
